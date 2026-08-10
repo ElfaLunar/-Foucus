@@ -30,21 +30,7 @@ body {
     cursor: default;
 }
 
-/* Overlay */
-.card-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(10, 10, 20, 0.2);
-    backdrop-filter: blur(0px);
-    transition: backdrop-filter 0.4s ease, background 0.4s ease;
-    z-index: 2;
-    pointer-events: none;
-}
-
-/* Texto */
+/* Texto - SEM RETÂNGULO */
 .card-text {
     position: fixed;
     top: 0;
@@ -66,11 +52,7 @@ body {
     text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
     transition: filter 0.4s ease, text-shadow 0.4s ease;
     filter: blur(0px);
-    background: rgba(0, 0, 0, 0.15);
-    padding: 0.3em 1em;
-    border-radius: 50px;
-    backdrop-filter: blur(2px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* REMOVIDO: background, border-radius, backdrop-filter, border, padding */
     font-family: 'Segoe UI', system-ui, sans-serif;
     text-transform: uppercase;
     text-align: center;
@@ -78,24 +60,22 @@ body {
     pointer-events: none;
 }
 
-/* Destaque da palavra "foucus" */
+/* Destaque da palavra "foucus" - SEM FUNDO */
 .card-text .highlight {
     color: #ffffff;
-    background: rgba(255, 255, 255, 0.15);
-    padding: 0 0.15em;
-    border-radius: 16px;
+    /* REMOVIDO: background, padding, border-radius, backdrop-filter */
     font-weight: 800;
     text-shadow: 0 0 40px rgba(255, 255, 255, 0.8), 0 0 80px rgba(255, 255, 255, 0.4);
     letter-spacing: 0.08em;
-    backdrop-filter: blur(2px);
     display: inline-block;
     pointer-events: auto;
     cursor: default;
     transition: all 0.3s ease;
 }
 
+/* Efeito quando passa o mouse na palavra */
 .card-text .highlight:hover {
-    transform: scale(1.08);
+    transform: scale(1.05);
     text-shadow: 0 0 60px rgba(255, 255, 255, 1), 0 0 120px rgba(255, 255, 255, 0.5);
 }
 
@@ -119,7 +99,6 @@ body {
 @media (max-width: 480px) {
     .card-text p {
         font-size: clamp(2rem, 12vw, 3.5rem);
-        padding: 0.4em 0.8em;
     }
     
     .hint {
