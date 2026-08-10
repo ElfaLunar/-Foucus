@@ -10,9 +10,6 @@
     <!-- Imagem de fundo -->
     <div class="card-bg" id="bgImage"></div>
     
-    <!-- Overlay -->
-    <div class="card-overlay" id="overlay"></div>
-    
     <!-- Texto com a palavra foucus -->
     <div class="card-text">
         <p>
@@ -24,35 +21,41 @@
 
     <script>
         const bgImage = document.getElementById('bgImage');
-        const overlay = document.getElementById('overlay');
         const focusWord = document.getElementById('focusWord');
         const textElement = document.querySelector('.card-text p');
 
         // Quando o mouse passa pela palavra "foucus"
         focusWord.addEventListener('mouseenter', () => {
-            // Imagem desfoca
+            // Palavra em foco (já está) - imagem desfoca
             bgImage.style.filter = 'blur(8px) brightness(0.6)';
-            overlay.style.background = 'rgba(10, 10, 20, 0.4)';
-            // Palavra fica em foco (já está)
+            // Garantir que a palavra fique em foco
+            textElement.style.filter = 'blur(0px)';
+            textElement.style.textShadow = '0 4px 40px rgba(0, 0, 0, 0.9)';
+            // Destaque extra na palavra
+            focusWord.style.textShadow = '0 0 60px rgba(255, 255, 255, 1), 0 0 120px rgba(255, 255, 255, 0.5)';
         });
 
         focusWord.addEventListener('mouseleave', () => {
-            // Imagem volta ao foco
+            // Volta ao normal: imagem em foco, palavra em foco
             bgImage.style.filter = 'blur(0px) brightness(1)';
-            overlay.style.background = 'rgba(10, 10, 20, 0.2)';
+            textElement.style.filter = 'blur(0px)';
+            textElement.style.textShadow = '0 4px 30px rgba(0, 0, 0, 0.7)';
+            focusWord.style.textShadow = '0 0 40px rgba(255, 255, 255, 0.8), 0 0 80px rgba(255, 255, 255, 0.4)';
         });
 
         // Quando o mouse passa pela imagem
         bgImage.addEventListener('mouseenter', () => {
-            // Frase desfoca
+            // Imagem em foco (já está) - palavra desfoca
             textElement.style.filter = 'blur(5px)';
             textElement.style.textShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+            focusWord.style.textShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
         });
 
         bgImage.addEventListener('mouseleave', () => {
-            // Frase volta ao foco
+            // Volta ao normal: imagem em foco, palavra em foco
             textElement.style.filter = 'blur(0px)';
             textElement.style.textShadow = '0 4px 30px rgba(0, 0, 0, 0.7)';
+            focusWord.style.textShadow = '0 0 40px rgba(255, 255, 255, 0.8), 0 0 80px rgba(255, 255, 255, 0.4)';
         });
     </script>
 </body>
